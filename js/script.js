@@ -34,24 +34,21 @@ const app = createApp({
         }
     },
     computed: {
-        lastImage(){
-            
-            if(currentIndex === images.length - 1){
-                currentIndex = 0;
-            } else {
-                gotoNext();
-            }
-            
-            return;
-        }
+        
     },
     methods: {
         gotoNext() {
             this.currentIndex++;
+            if(this.currentIndex === images.length - 1){
+                this.currentIndex = 0;
+            }
         },
         gotoPrev(){
             this.currentIndex--;
-        }
+            if (this.currentIndex === 0) {
+                this.currentIndex = images.length - 1;
+            }
+        },
     }
 
 });
