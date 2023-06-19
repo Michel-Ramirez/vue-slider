@@ -21,14 +21,20 @@
     <h1 class="text-center mt-5"><b>GALLERIA DI IMMAGINI</b></h1>
     <main class="container mt-5">
         <div id="carousel">
-            <i class="bi bi-arrow-left-circle-fill" id="prev"></i>
-            <div class="gallery">
-                <img v-for='image in images' :src="images.image" alt="" class="d-block">
+            <i class="bi bi-arrow-left-circle-fill" id="prev" @click="gotoPrev"></i>
+            <div class="gallery" v-for='(image, index) in images' v-show="currentIndex === index" >
+                <figure>
+                    <img :src="image.image" :alt="image.title" :title="image.title">
+                    <figcaption>
+                        <h4>{{image.title}}</h4>
+                        <p>{{image.text}}</p>
+                    </figcaption>
+                </figure>
             </div>
             <div class="prev-img">
-                <img src="img/01.webp" alt="">
+                <img v-for='(image, index) in images' :src="image.image" :alt="image.title" :title="image.title" :class="{active : currentIndex === index}">
             </div>
-            <i class="bi bi-arrow-right-circle-fill" id="next"></i>
+            <i class="bi bi-arrow-right-circle-fill" id="next" @click=lastImage()></i>
         </div>
     </main>
 </body>
