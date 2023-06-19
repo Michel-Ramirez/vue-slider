@@ -6,6 +6,7 @@ const app = createApp({
     name : 'Carousel',
     data(){
         return {
+            autoPlay : null,
             currentIndex : 0,
             images: [
                 {
@@ -33,22 +34,36 @@ const app = createApp({
             
         }
     },
-    computed: {
-        
-    },
     methods: {
         gotoNext() {
-            this.currentIndex++;
-            if(this.currentIndex === images.length - 1){
+            
+            if(this.currentIndex === this.images.length - 1){
                 this.currentIndex = 0;
+            } else {
+                this.currentIndex++;
             }
         },
         gotoPrev(){
-            this.currentIndex--;
+            
             if (this.currentIndex === 0) {
-                this.currentIndex = images.length - 1;
+                this.currentIndex = this.images.length - 1;
+            } else {
+                this.currentIndex--;
             }
         },
+        gotoCurrentImg(targetIndex){
+            this.currentIndex = targetIndex;
+        },
+        startAutoplay(){
+            autoPlay = setInterval(this.gotoNext, 3000);
+
+        },
+        stopAutoplay(){
+            clearInterval(this.autoPlay);
+        }
+    },
+    mounted(){
+        this.autoPlay = setInterval(this.gotoNext, 3000);
     }
 
 });

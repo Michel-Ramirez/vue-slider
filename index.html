@@ -32,7 +32,8 @@
                 </figure>
             </div>
             <div class="prev-img">
-                <img v-for='(image, index) in images' :src="image.image" :alt="image.title" :title="image.title" :class="{active : currentIndex === index}">
+                <img v-for='(image, index) in images' :src="image.image" :alt="image.title" :title="image.title" :class="{active : currentIndex === index}" @click="gotoCurrentImg(index)"
+                @mouseleave="startAutoplay" @mouseenter="stopAutoplay">
             </div>
             <i class="bi bi-arrow-right-circle-fill" id="next" @click="gotoNext"></i>
         </div>
