@@ -1,0 +1,55 @@
+#carousel {
+    height: 400px;
+    width: 800px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.gallery img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: inset 1px 3px 33px 12px #6B6B6B;
+    box-shadow: 0px 0px 26px 4px #262626;
+    background-color: rgba(0, 0, 0, 0.847);
+    display: none;
+}
+
+.gallery img:first-child {
+    object-position: 50% 30%;
+}
+
+.gallery img:nth-child(3){
+    object-position: right top;
+}
+
+#prev, #next {
+    position: absolute;
+    font-size: 2rem;
+    top: 50%;
+    translate: 0 -50%;
+    cursor: pointer;
+}
+
+#next {
+    left: 105%;
+}
+
+#prev {
+    right: 105%;
+}
+
+.prev-img {
+    height: 150px;
+    width: 500px;
+    margin: 10px auto;
+}
+
+.prev-img img{
+    height: 100%;
+    width: calc(100% / 5);
+    object-fit: cover;
+    box-shadow: 0px 0px 26px 4px #262626;
+    border: 10px solid whitesmoke;
+}
