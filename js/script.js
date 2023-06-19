@@ -6,6 +6,7 @@ const app = createApp({
     name : 'Carousel',
     data(){
         return {
+            currentIndex : 0,
             images: [
                 {
                     image: 'img/01.webp',
@@ -31,7 +32,28 @@ const app = createApp({
             ]
             
         }
+    },
+    computed: {
+        lastImage(){
+            
+            if(currentIndex === images.length -1){
+                currentIndex = 0;
+            } else {
+                gotoNext();
+            }
+            
+            return;
+        }
+    },
+    methods: {
+        gotoNext() {
+            this.currentIndex++;
+        },
+        gotoPrev(){
+            this.currentIndex--;
+        }
     }
+
 });
 
 app.mount ('#carousel');
